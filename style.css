@@ -1,0 +1,110 @@
+/* Custom Styles & Transitions */
+body {
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Accordion Custom Logic */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+}
+
+.accordion-item.open .accordion-content {
+    max-height: 1000px;
+    padding-bottom: 1.5rem;
+}
+
+.accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+.accordion-item.open .accordion-icon {
+    transform: rotate(180deg);
+}
+
+/* Highlighting interaction letters */
+.hl-ar {
+    color: #059669; /* Emerald 600 */
+    background-color: #d1fae5; /* Emerald 100 */
+    border-radius: 0.25rem;
+    padding: 0 0.25rem;
+    display: inline-block;
+}
+
+.hl-en {
+    color: #059669;
+    font-weight: 600;
+}
+
+/* Dark Mode highlights */
+html.dark .hl-ar {
+    color: #34d399;
+    background-color: rgba(5, 150, 105, 0.25);
+}
+html.dark .hl-en { color: #34d399; }
+
+/* Tri-lingual Card logic */
+.tri-lingual-card {
+    background: linear-gradient(to right bottom, #ffffff, #f1f5f9);
+    border-left: 4px solid #14b8a6;
+    transition: background 0.3s ease;
+}
+
+html.dark .tri-lingual-card {
+    background: linear-gradient(to right bottom, #1e293b, #0f172a);
+}
+
+/* Audio & Buttons */
+.play-btn {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.play-btn:hover {
+    transform: scale(1.05);
+}
+.playing {
+    animation: pulse 1.5s infinite;
+    background-color: #0f766e !important;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(20, 184, 166, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); }
+}
+
+/* Keyboard & Rule Pop */
+.arabic-key {
+    transition: all 0.2s ease;
+}
+.arabic-key:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.arabic-key.selected {
+    background-color: #14b8a6;
+    color: white;
+    border-color: #0d9488;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.rule-pop {
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
